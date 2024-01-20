@@ -18,7 +18,11 @@ class MediaStore {
   static String appFolder = "";
   int _sdkInt = 0;
 
-  MediaStore();
+  MediaStore() {
+    if (Platform.isAndroid) {
+      getSDKInt();
+    }
+  }
 
   getSDKInt() async {
     _sdkInt = await MediaStorePlatform.instance.getPlatformSDKInt();
